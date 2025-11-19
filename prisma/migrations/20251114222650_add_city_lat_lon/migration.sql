@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `city` ADD COLUMN `lat` DOUBLE NULL,
+    ADD COLUMN `lon` DOUBLE NULL;
