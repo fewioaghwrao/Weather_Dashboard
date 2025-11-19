@@ -1,109 +1,116 @@
-🌤️ 天気ダッシュボード（Weather Dashboard）
+# 🌤️ 天気ダッシュボード（Weather Dashboard）
 
-Next.js / Prisma / MySQL / Heroku
+**Next.js / Prisma / MySQL / Heroku**
 
-ブラウザ上で 都市の天気検索・表示・お気に入り登録・PDF出力・会員管理 を行える Web アプリケーションです。
-Next.js App Router と Prisma を採用し、認証 / メール検証 / パスワードリセット / 管理者ページを備えたフルスタック構成になっています。
+ブラウザ上で **都市の天気検索・表示・お気に入り登録・PDF 出力・会員管理** を行える Web アプリケーションです。  
+Next.js App Router と Prisma を採用し、**認証 / メール検証 / パスワードリセット / 管理者ページ** を備えたフルスタック構成になっています。
 
-📌 主な特徴
+---
 
-Next.js App Router（13+） を使用したモダンな構成
+## 📌 主な特徴
 
-Prisma ORM によるスキーマ管理
+- Next.js App Router（13+）を使用したモダンな構成
+- Prisma ORM によるスキーマ管理
+- JawsDB MySQL（Heroku）を使用
+- 都市の **現在の天気 + 5 日間予報** の表示
+- お気に入り都市を保存・解除
+- 天気情報を JSON 形式でキャッシュ（`WeatherCache`）
+- 会員登録 / ログイン / メール認証 / パスワードリセット
+- 管理者による会員一覧・検索・並び替え・CSV 出力
+- 都市別の天気情報を PDF で出力
 
-JawsDB MySQL（Heroku） を使用
+---
 
-都市の現在の天気 + 5日間予報の表示
+## 🖥️ デモ（サンプル）
 
-お気に入り都市を保存・削除
+> 下記URLにあります。
+> 
+> https://weather-dashboard-xxxx.herokuapp.com](https://weather-dashboard-naoki2025-b551ca7a0859.herokuapp.com/auth/login
+> 
+> テストアカウント
+> 
+> 一般会員
+>
+> ユーザーID：user@example.com　パスワード：Test1234
+> 
+> 管理者
+>
+> ユーザーID：admin@example.com パスワード：Test1234
+> 
 
-天気情報を JSON 形式でキャッシュ（WeatherCache）
+---
 
-会員登録 / ログイン / メール認証 / パスワードリセット
+## 🚀 技術スタック
 
-管理者による会員一覧・検索・並び替え・CSV 出力
+| 分類            | 使用技術                             |
+|-----------------|--------------------------------------|
+| フロント / SSR  | Next.js 14（App Router）            |
+| UI / CSS        | Tailwind CSS                        |
+| API / BFF       | Next.js Route Handlers              |
+| DB / ORM        | MySQL（JawsDB） / Prisma            |
+| デプロイ        | Heroku（Node Buildpack）            |
+| 認証            | メール認証 / パスワードリセット     |
+| 外部 API        | OpenWeatherMap API                  |
 
-PDF 出力対応（都市別の天気）
+---
 
-🖥️ デモ（サンプル）
+## 📱 画面一覧（一般ユーザー）
 
-デプロイ済み URL があればこちらに記述
-例）https://weather-dashboard-xxxx.herokuapp.com
+### ■ ログインページ
 
-🚀 技術スタック
-分類	使用技術
-フロント / SSR	Next.js 14（App Router）
-UI / CSS	Tailwind CSS
-API / BFF	Next.js Route Handlers
-DB / ORM	MySQL（JawsDB） / Prisma
-デプロイ	Heroku（Node Buildpack）
-認証	メール認証 / パスワードリセット
-外部 API	OpenWeatherMap API
-📱 画面一覧（一般ユーザー）
-■ ログインページ
+- ログインフォーム  
+- 会員登録ページへのリンク  
+- パスワード再設定ページへのリンク  
 
-ログインフォーム
+### ■ 会員登録ページ
 
-会員登録ページへのリンク
+- メール認証によるユーザー作成  
+- 登録完了後、メール内リンクから本登録
 
-パスワード再設定リンク
+### ■ 天気ダッシュボード
 
-■ 会員登録ページ
+- 都市検索
+- 都市一覧表示
+- 天気表示（現在 + 5 日間予報）
+- お気に入り追加・削除
+- 会員情報ページへの遷移
+- 天気情報の PDF 出力
 
-メール認証によるユーザー作成
+### ■ 会員情報編集ページ
 
-■ 天気ダッシュボード
+- 入力フォーム（氏名 / 郵便番号 / 住所 / 電話番号）
+- 更新ボタンで会員情報を変更
 
-都市検索
+### ■ パスワード再設定フロー
 
-都市一覧表示
+- メールアドレス入力 → リセット用メール送信
+- メール内リンク（トークン）でパスワード編集ページへ遷移
+- 新しいパスワードを設定・保存
 
-天気表示（現在 + 5日間予報）
+---
 
-お気に入り追加・削除
+## 🛠️ 管理者機能（/admin）
 
-会員情報ページへの遷移
+- 会員一覧表示
+- 検索 / 絞り込み
+- 並び替え
+- 会員情報編集
+- CSV 出力
+- ログアウト
 
-PDF 出力
+---
 
-■ 会員情報編集ページ
+## 🗂️ ER 図（実装準拠）
 
-入力フォーム（氏名 / 郵便番号 / 住所 / 電話番号）
+> 📌 ER 図の PNG をリポジトリに追加したら、下記のパスを修正して貼り付けてください。
+>
+> ```md
+> ![ER Diagram](./docs/er_diagram.png)
+> ```
 
-更新機能
+**テキスト版 ER 図（概要）**
 
-■ パスワード再設定
-
-メール送信
-
-トークン認証
-
-パスワード更新
-
-🛠️ 管理者機能（/admin）
-
-会員一覧表示
-
-検索 / 絞り込み
-
-並び替え
-
-会員情報編集
-
-CSV 出力
-
-ログアウト
-
-🗂️ ER 図（実装準拠）
-
-📌 ここに ER 図 PNG を貼ってください
-例）
-
-![ER Diagram](./docs/er_diagram.png)
-
-
-（テキスト版）
-
+```text
 USERS
 ├─ id (PK)
 ├─ name
@@ -154,77 +161,3 @@ PASSWORD_RESET_TOKENS
 ├─ expires_at
 ├─ used_at
 └─ created_at
-
-🔄 画面遷移図（一般ユーザー）
-
-📌 PNG を後で貼るスペース
-例）
-
-![User Flow](./docs/user_flow.png)
-
-
-テキスト版：
-
-パスワード再設定 → メール認証 → パスワード編集 → ログイン
-                      ↑
-会員登録ページ → メール認証 → ログインページ → 天気ダッシュボード
-                                          ↓
-                                 会員情報編集ページ
-
-🔒 認証フロー
-◎ 会員登録
-
-入力されたメール宛に認証メールを送信
-
-EmailVerificationToken に記録
-
-トークン認証後、ユーザーが Active 状態に
-
-◎ ログイン
-
-email + password の照合
-
-last_login_at の更新
-
-◎ パスワードリセット
-
-メール送信 → トークン発行
-
-有効期限内であればパスワード更新可能
-
-🌤 天気データ取得処理
-1. OpenWeather API から天気情報を取得
-2. WeatherCache に JSON を保存
-3. 直近キャッシュがあれば API 呼び出しを抑制（高速化）
-📦 ローカル開発環境構築
-① プロジェクト取得
-git clone <repo-url>
-cd weather-dashboard
-
-② 依存関係インストール
-npm install
-
-③ .env.local を設定
-DATABASE_URL="mysql://user:pass@localhost:3306/weather_dashboard"
-OPENWEATHER_API_KEY="XXXX"
-NEXT_PUBLIC_BASE_URL="http://localhost:3000"
-
-④ Prisma マイグレーション
-npx prisma migrate dev
-
-⑤ 開発サーバー起動
-npm run dev
-
-☁ デプロイ手順（Heroku）
-1. Heroku アプリを作成
-heroku create weather-dashboard-xxxx
-
-2. JawsDB MySQL を追加
-heroku addons:create jawsdb:kitefin
-
-3. 環境変数の設定
-heroku config:set OPENWEATHER_API_KEY=XXXX
-heroku config:set NEXT_PUBLIC_BASE_URL="https://weather-dashboard-xxxx.herokuapp.com"
-
-4. デプロイ
-git push heroku main
