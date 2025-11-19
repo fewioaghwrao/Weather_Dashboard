@@ -1,4 +1,5 @@
 // src/app/member/dashboard/page.tsx
+import { headers } from "next/headers";
 import type { WeatherResponse } from "@/types/weather";
 import WeatherDashboard from "@/components/WeatherDashboard";
 import { getCurrentUser } from "@/lib/auth";
@@ -8,8 +9,14 @@ import Link from "next/link";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();  // ★ 追加
+  const headersList = await headers();
+  const host = headersList.get("host") ?? "localhost:3000";
+  const protocol =
+   process.env.NODE_ENV === "production" ? "https" : "http";
+
+  const baseUrl = `${protocol}://${host}`;
   const res = await fetch(
-    "http://localhost:3000/api/weather/current?cityId=1",
+    `${baseUrl}/api/weather/current?cityId=1`,
     { cache: "no-store" }
   );
   const data: WeatherResponse = await res.json();
