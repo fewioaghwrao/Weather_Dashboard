@@ -39,6 +39,31 @@ Next.js App Router と Prisma を採用し、**認証 / メール検証 / パス
 > 
 
 ---
+## 📸 画面サンプル
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>天気ダッシュボード（検索 & 現在の天気）</strong><br>
+      <img src="./docs/sample1.png" width="380">
+    </td>
+    <td align="center">
+      <strong>天気ダッシュボード（5日間予報）</strong><br>
+      <img src="./docs/sample2.png" width="380">
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>管理者ページ（会員一覧）</strong><br>
+      <img src="./docs/sample3.png" width="600">
+    </td>
+  </tr>
+</table>
+
+---
 
 ## 🚀 技術スタック
 
