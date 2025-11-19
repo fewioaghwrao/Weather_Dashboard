@@ -104,10 +104,48 @@ Next.js App Router と Prisma を採用し、**認証 / メール検証 / パス
 
 ![ER Diagram](./docs/ERD.drawio.png)
 
-##🔄画面遷移図（一般ユーザー）
+## 🔄画面遷移図（一般ユーザー）
 ![ER Diagram](./docs/status_diagram_member.drawio.png)
 
-##🔄画面遷移図（管理者）
+## 🔄画面遷移図（管理者）
 ![ER Diagram](./docs/status_diagram_admin.drawio.png)
 
+## 🧪 テスト方法
+
+### 1.依存関係インストール
+- npm install
+
+### 2. .env.local を作成
+- DATABASE_URL="mysql://user:pass@localhost:3306/weather_dashboard"
+- OPENWEATHER_API_KEY="XXXX"
+- NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+
+### 3.Prisma マイグレーション
+- npx prisma migrate dev
+
+### 4.開発サーバー起動
+- npm run dev
+
+### 5.ブラウザで動作確認
+- http://localhost:3000
+
+## ☁️ デプロイ手順（Heroku）
+
+### 1.Heroku アプリ作成
+- heroku create weather-dashboard-xxxx
+
+### 2.JawsDB MySQL 追加
+- heroku addons:create jawsdb:kitefin
+
+### 3.環境変数設定
+- heroku config:set OPENWEATHER_API_KEY=XXXX
+- heroku config:set NEXT_PUBLIC_BASE_URL="https://weather-dashboard-xxxx.herokuapp.com"（DATABASE_URL は自動設定）
+
+### 4.デプロイ
+- git push heroku main
+
+### 5.Heroku URL で動作確認
+
+## 📄 ライセンス
+- MIT License。商用・個人利用どちらも可。LICENSE ファイルを参照。
 
