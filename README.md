@@ -102,62 +102,12 @@ Next.js App Router と Prisma を採用し、**認証 / メール検証 / パス
 
 ## 🗂️ ER 図（実装準拠）
 
-> 📌 ER 図の PNG をリポジトリに追加したら、下記のパスを修正して貼り付けてください。
->
-> ```md
-> ![ER Diagram](./docs/er_diagram.png)
-> ```
+![ER Diagram](./docs/ERD.drawio.png)
 
-**テキスト版 ER 図（概要）**
+##🔄画面遷移図（一般ユーザー）
+![ER Diagram](./docs/status_diagram_member.drawio.png)
 
-```text
-USERS
-├─ id (PK)
-├─ name
-├─ email
-├─ postal_code
-├─ address
-├─ phone
-├─ password_hash
-├─ role (ADMIN / MEMBER)
-├─ is_active
-├─ last_login_at
-├─ created_at
-└─ updated_at
+##🔄画面遷移図（管理者）
+![ER Diagram](./docs/status_diagram_admin.drawio.png)
 
-CITIES
-├─ id (PK)
-├─ name_ja
-├─ name_en
-├─ prefecture
-├─ api_city_code
-├─ created_at
-└─ updated_at
 
-FAVORITES
-├─ id (PK)
-├─ user_id (FK → USERS)
-└─ city_id (FK → CITIES)
-
-WEATHER_CACHE
-├─ id (PK)
-├─ city_id (FK → CITIES)
-├─ date
-├─ data_json
-└─ fetched_at
-
-EMAIL_VERIFICATION_TOKENS
-├─ id (PK)
-├─ user_id (FK → USERS)
-├─ token
-├─ expires_at
-├─ used_at
-└─ created_at
-
-PASSWORD_RESET_TOKENS
-├─ id (PK)
-├─ user_id (FK → USERS)
-├─ token
-├─ expires_at
-├─ used_at
-└─ created_at
