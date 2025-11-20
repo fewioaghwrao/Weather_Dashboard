@@ -25,7 +25,7 @@ Next.js App Router と Prisma を採用し、**認証 / メール検証 / パス
 
 > 下記URLにあります。
 > 
-> https://weather-dashboard-xxxx.herokuapp.com](https://weather-dashboard-naoki2025-b551ca7a0859.herokuapp.com/auth/login
+> https://weather-dashboard-xxxx.herokuapp.com(https://weather-dashboard-naoki2025-b551ca7a0859.herokuapp.com/auth/login
 > 
 > テストアカウント
 > 
